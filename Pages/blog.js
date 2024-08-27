@@ -38,6 +38,10 @@ await getBlogPosts();
    
  }
 
+ function  getFeaturedBlogs(){
+   const featuredBlogs = blogPosts.slice(0,4);
+   return featuredBlogs;
+}
  const createCard = (element,colClass,link) => {
 
     const cardDiv = document.createElement("div");
@@ -82,3 +86,4 @@ await getBlogPosts();
 
 renderBlogPosts();
 export {blogPosts};
+export {getFeaturedBlogs};

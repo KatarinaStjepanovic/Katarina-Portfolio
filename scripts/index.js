@@ -1,5 +1,6 @@
 import {getFeaturedProjects}  from "../Pages/projects.js";
 import { createCard } from "./utils.js";
+import { getFeaturedBlogs } from "../Pages/blog.js";
 
 
 
@@ -15,3 +16,17 @@ const renderProjectsSection = () => {
     
 }
 renderProjectsSection();
+
+const renderBlogSection = () => {
+    const featuredBlogs = getFeaturedBlogs();
+    console.log(featuredBlogs);
+    const blogGrid = document.getElementById("blogsGrid");
+    featuredBlogs.forEach( (blog) => {
+        const card = createCard(blog.imgUrl,blog.title,blog.content,"col-4","#");
+    blogGrid.appendChild(card);
+      
+    });
+    
+}
+renderBlogSection();
+
