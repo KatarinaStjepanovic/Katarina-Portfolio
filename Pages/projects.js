@@ -6,7 +6,13 @@ const getProjects = async  () => {
     projects = dataJson;
 }
 
+function getFeaturedProjects(){
+    const featuredProjects = projects.filter( (item) => item.isFeatured == true );
+    return featuredProjects;
+}
+
 await getProjects();
+
 const renderProjects = () =>{
     const projectGrid = document.getElementById("projects");
     if(projectGrid){
@@ -64,4 +70,5 @@ const createCard = (element,colClass,link) => {
  }
  renderProjects();
 
- export {projects};
+ export {projects,getFeaturedProjects};
+ 

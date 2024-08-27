@@ -4,14 +4,16 @@
        "title":"Project 1" ,
        "content": "Lorem ipsum",
        "createdAt": "2015-03-25",
-       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+       "isFeatured" : true
     },
     {
        "id": 2,
        "title":"Project 2" ,
        "content": "Lorem ipsum",
        "createdAt": "2015-03-25",
-       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ,
+       "isFeatured" : true
  
     },
     {
@@ -19,7 +21,8 @@
        "title":"Project 3" ,
        "content": "Lorem ipsum",
        "createdAt": "2015-03-25",
-       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ,
+       "isFeatured" : true
  
     },
     {
@@ -27,7 +30,9 @@
        "title":"Project 4" ,
        "content": "Lorem ipsum",
        "createdAt": "2015-03-25",
-       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       "imgUrl": "https://images.unsplash.com/photo-1724026403614-f5461d17c6cc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ,
+       "isFeatured" : false
+
     }
     
  ]
