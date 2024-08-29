@@ -9,7 +9,8 @@ const renderProjectsSection = () => {
     console.log(featuredProjects);
     const projectsGrid = document.getElementById("projectsGrid");
     featuredProjects.forEach( (project) => {
-        const card = createCard(project.imgUrl,project.title,project.content,"col-4","#");
+        const projectLink = `../Pages/workdetails.html?id=${project.id}`;
+        const card = createCard(project.imgUrl,project.title,project.content,"col-4",projectLink);
     projectsGrid.appendChild(card);
       
     });
@@ -22,7 +23,8 @@ const renderBlogSection = () => {
     console.log(featuredBlogs);
     const blogGrid = document.getElementById("blogsGrid");
     featuredBlogs.forEach( (blog) => {
-        const card = createCard(blog.imgUrl,blog.title,blog.content,"col-4","#");
+    const blogLink = `../Pages/blogdetails.html?id=${blog.id}`;
+    const card = createCard(blog.imgUrl,blog.title,blog.content,"col-3",blogLink);
     blogGrid.appendChild(card);
       
     });
