@@ -9,39 +9,87 @@ const getBlogPosts =  async () => {
    console.log(jsonData);
 }
 
+const loadMore = () => {
+   renderBlogPosts(true);
+}
+
 
 await getBlogPosts();
 
- const renderBlogPosts = () => {
+
+ const renderBlogPosts = (isShowingMore) => {
     const blogGrid = document.getElementById("blog");
     if(blogGrid){
        blogGrid.innerHTML = null;
-       blogPosts.forEach( (element) =>{
-          const link = `./blogdetails.html?id=${element.id}`;
+       blogPosts.forEach( (element,index) =>{
+         if(isShowingMore){
+         const link = `./blogdetails.html?id=${element.id}`;
          const card =  createCard(element,"col-3",link);
          blogGrid.appendChild(card);
+         }
+         else{
+            if(index <=3){ 
+               const link = `./blogdetails.html?id=${element.id}`;
+               const card =  createCard(element,"col-3",link);
+               blogGrid.appendChild(card);
+            }
+            
+            
+         }
+         
         
       });
+      if(isShowingMore == false){ 
       const blogBtnDiv = document.createElement("div");
       blogBtnDiv.classList = "d-flex justify-content-center mt-5";
-
+     
+      
       const blogButton = document.createElement("button");
       blogButton.type = "button";
       blogButton.classList = "btn btn-primary w-25 p-2";
       blogButton.innerText = "Load more";
 
+      blogButton.addEventListener("click", () => loadMore());
+
       blogBtnDiv.appendChild(blogButton);
       blogGrid.appendChild(blogBtnDiv);
+      }
      }
 
      
    
  }
 
- function  getFeaturedBlogs(){
-   const featuredBlogs = blogPosts.slice(0,4);
+ function getFeaturedBlogs() {
+   const featuredBlogs = [];
+   let first, second, third, fourth;
+   fourth = third = second = first = blogPosts[0];
+
+   for (let i = 1; i < blogPosts.length; i++) {
+       if (blogPosts[i].createdAt > first.createdAt) {
+           fourth = third;
+           third = second;
+           second = first;
+           first = blogPosts[i];
+       } else if (blogPosts[i].createdAt > second.createdAt && blogPosts[i].createdAt !== first.createdAt) {
+           fourth = third;
+           third = second;
+           second = blogPosts[i];
+       } else if (blogPosts[i].createdAt > third.createdAt && blogPosts[i].createdAt !== second.createdAt) {
+           fourth = third;
+           third = blogPosts[i];
+       } else if (blogPosts[i].createdAt > fourth.createdAt && blogPosts[i].createdAt !== third.createdAt) {
+           fourth = blogPosts[i];
+       }
+   }
+   featuredBlogs[0] = first;
+   featuredBlogs[1] = second;
+   featuredBlogs[2] = third;
+   featuredBlogs[3] = fourth;
+
    return featuredBlogs;
 }
+
  const createCard = (element,colClass,link) => {
 
     const cardDiv = document.createElement("div");
@@ -84,6 +132,6 @@ await getBlogPosts();
  
  }
 
-renderBlogPosts();
+renderBlogPosts(false);
 export {blogPosts};
 export {getFeaturedBlogs};
