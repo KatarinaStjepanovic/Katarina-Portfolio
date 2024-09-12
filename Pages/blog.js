@@ -1,6 +1,10 @@
+import {getCollectionSnapshot,insert,getCollectionItemById,removeCollectionItemById,updateCollectionById} from "../scripts/firebase.js";
+
+
 console.log("Hello from blog js");
 
 let blogPosts = [];
+const BLOG_COLLECTION = "blogs";
 
 const getBlogPosts =  async () => {
    const data = await fetch("../data/blog-data.json");
@@ -8,13 +12,30 @@ const getBlogPosts =  async () => {
    blogPosts = jsonData;
    console.log(jsonData);
 }
+await getBlogPosts();
 
 const loadMore = () => {
    renderBlogPosts(true);
 }
 
+const addBlogs = async  (obj) => {
+  await insert(obj,BLOG_COLLECTION);
+ }
 
-await getBlogPosts();
+
+ 
+ const getBlogById = async (id) => {
+     const blog = await getCollectionItemById(BLOG_COLLECTION, id);
+    return blog;
+ }
+ const updateBlogs = async (id) => {
+   await updateCollectionById(BLOG_COLLECTION, id, { title: "Hello!"} );
+   
+ 
+ }
+ const removeBlogs = async (id) => {
+    await removeCollectionItemById(BLOG_COLLECTION, id);
+ }
 
 
  const renderBlogPosts = (isShowingMore) => {

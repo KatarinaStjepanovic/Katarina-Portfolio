@@ -1,10 +1,44 @@
+import {getCollectionSnapshot,insert,getCollectionItemById,removeCollectionItemById,updateCollectionById} from "../scripts/firebase.js";
+
+
 let projects = [];
+const PROJECTS_COLLECTION = "projects";
 
 const getProjects = async  () => {
-    const data = await fetch ( "../data/projects-data.json");
-    const dataJson = await data.json();
-    projects = dataJson;
+    const snapshot = await getCollectionSnapshot(PROJECTS_COLLECTION);
+    if(snapshot){ 
+    snapshot.forEach( childSnapshot => {
+        projects.push(childSnapshot.val());
+      });
+    }else{
+        console.log("Snapshot doesn't exist!");
+    }
+      console.log(projects);
+    
 }
+const addProject = async  (obj) => {
+ await insert(obj,PROJECTS_COLLECTION);
+
+}
+
+
+
+const getProjectById = async (id) => {
+    const project = await getCollectionItemById(PROJECTS_COLLECTION, id);
+   return project;
+}
+const updateProjects = async (id) => {
+  await updateCollectionById(PROJECTS_COLLECTION, id, { title: "Hello!"} );
+  
+
+}
+const removeProjects = async (id) => {
+   await removeCollectionItemById(PROJECTS_COLLECTION, id);
+}
+
+
+
+
 
 function getFeaturedProjects(){
     const featuredProjects = projects.filter( (item) => item.isFeatured == true );
@@ -69,6 +103,8 @@ const createCard = (element,colClass,link) => {
  
  }
  renderProjects();
+
+
 
  export {projects,getFeaturedProjects};
  
